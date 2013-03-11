@@ -24,4 +24,4 @@ sudo python sevensegmentdisplay.py
 
 At this time of writing I'm currently an Interactive Developer at Digiflare Inc. working heavily on the Android stack for both handhelds and tablets. On my free time I enjoy developing mobile applications and lightweight circuitry on my Raspberry Pi.
 
-You can find more about me [here](http://inajstudios.com) (If I ever get around to finishing it).
+You can find more about me [here](http://inajstudios.com) (if I ever get around to finishing it).
