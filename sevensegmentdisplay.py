@@ -16,7 +16,7 @@ GPIO.setmode(GPIO.BOARD)
 for x in GPIO_PIN_NUMBER:
     GPIO.setup(x, GPIO.OUT)
 
-userInput = ""
+userInput = ''
 
 ##############################
 # Functions
