@@ -3,32 +3,24 @@
 from time import sleep
 import RPi.GPIO as GPIO
 
-####################
-# Inits
-####################
-
-# GPIO Inits
-GPIO.setmode(GPIO.BOARD)
+##############################
+# Declarations and Inits
+##############################
 
 # Constants
 GPIO_PIN_NUMBER = [3,5,7,8,10,11,12]
 
+# GPIO Inits
+GPIO.setmode(GPIO.BOARD)
+
 for x in GPIO_PIN_NUMBER:
     GPIO.setup(x, GPIO.OUT)
 
-#GPIO.setup(3, GPIO.OUT) #f
-#GPIO.setup(5, GPIO.OUT) #g
-#GPIO.setup(7, GPIO.OUT) #e
-#GPIO.setup(8, GPIO.OUT) #c
-#GPIO.setup(10, GPIO.OUT) #b
-#GPIO.setup(11, GPIO.OUT) #d
-#GPIO.setup(12, GPIO.OUT) #a
-
 userInput = ""
 
-####################
+##############################
 # Functions
-####################
+##############################
 
 def is_number(s):
     try:
@@ -96,6 +88,34 @@ def user_help():
     print "q         - Quit | Quit the application"
     print "<number>  - Displays <number> | Changes what number the LED shows to <number>"
     print "c         - Clear | Clears all LEDs"
+    print "cd        - CountDown | Begins a countdown from 9 to 0 with 0.5s delays"
+    print "p         - PartyTime! | Popped a Molly I\'m sweat\'n; Wooo!"
+
+def user_party(s):
+    gpio_read_letters("a")
+    sleep(s)
+    user_clear()
+    gpio_read_letters("b")
+    sleep(s)
+    user_clear()
+    gpio_read_letters("g")
+    sleep(s)
+    user_clear()
+    gpio_read_letters("e")
+    sleep(s)
+    user_clear()
+    gpio_read_letters("d")
+    sleep(s)
+    user_clear()
+    gpio_read_letters("c")
+    sleep(s)
+    user_clear()
+    gpio_read_letters("g")
+    sleep(s)
+    user_clear()
+    gpio_read_letters("f")
+    sleep(s)
+    user_clear()
 
 def main():
     print "Enter a command (type \'h\' for help):"
@@ -111,7 +131,6 @@ def main():
             user_help()
         elif (len(userInput) == 1 and is_number(userInput)):
             number = int(userInput)
-            print "DEBUG: SAFE"
             gpio_show_number(number)
         elif (userInput == "cd"):
             print "COUNTDOWN!"
@@ -120,18 +139,19 @@ def main():
                 gpio_show_number(x)
                 sleep(0.5)
                 gpio_clear();
+        elif (userInput == "p"):
+            sleeptimer = 0.01;
+            print "PARTY TIME!"
+            for x in range(1, 11):
+                x = 11 - x
+                user_party(x*sleeptimer)
+            for x in range(1, 11):
+                user_party(x*sleeptimer)
         else:
             print "Invalid command, type \'h\' for help"
 
-#
+####################
 # Main - start here
-#
+####################
 
-test = "0"
-
-print len(test) == 1
-print is_number(test)
-print test
-print int(test)
-print int(test) + 9
 main()
