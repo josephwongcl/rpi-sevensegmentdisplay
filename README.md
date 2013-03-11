@@ -11,6 +11,15 @@ For reference, here are the GPIO mappings based on Model B [Revision 2.0 Pinout]
 - GPIO 11 maps LED d
 - GPIO 12 maps LED a
 
+## Usage
+
+You must have the [RPi.GPIO](https://pypi.python.org/pypi/RPi.GPIO) Python library package installed.
+
+To run the script simply run:
+```shell
+sudo python sevensegmentdisplay.py
+```
+
 ## About Me
 
 At this time of writing I'm currently an Interactive Developer at Digiflare Inc. working heavily on the Android stack for both handhelds and tablets. On my free time I enjoy developing mobile applications and lightweight circuitry on my Raspberry Pi.
